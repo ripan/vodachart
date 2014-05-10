@@ -44,3 +44,10 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+gem 'omniauth'
+gem 'omniauth-identity'
+gem 'omniauth-facebook'
+gem 'omniauth-google'
+gem 'omniauth-twitter'

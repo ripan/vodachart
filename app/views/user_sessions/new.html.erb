@@ -1,0 +1,28 @@
+<div class="row content signup">
+  <div class="col-md-4 col-md-offset-4 well">
+
+    <%= form_tag '/auth/identity/callback', :role=>"form" do %>
+    <fieldset>
+      <center><p class="muted">Sign in</p></center>     
+      <center>      
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <%= text_field_tag :auth_key ,'', :class=>"form-control", :placeholder=>"Email" , :type=>"email"%>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            <%= password_field_tag :password ,'', :class=>"form-control", :placeholder=>"Password" , :type=>"password"%>
+          </div>
+        </div>
+
+        <%= submit_tag "Sign in",  :class => "btn btn-large btn-primary", :style=>"width:100%" %>
+      </center> 
+    </fieldset>
+    <%end%>
+
+  </div>
+</div>

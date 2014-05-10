@@ -14,10 +14,18 @@
         <li class="active"><%=link_to "Home", root_url%></li>
       </ul>
 
+      <%if signed_in?%>
       <ul class="nav navbar-nav navbar-right">
-        <li><a  href="/signup">Sign Up</a></li>
-        <li><a  href="/signin">Sign In</a></li>
+        <li><%=link_to current_user.name, root_url , :class=>"navbar-link"%></li>
+        <li><%=link_to "Sign out", signout_path%> </li>
       </ul>
+      <%else%>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%=link_to "Sign up", signup_path%></li>
+        <li><%=link_to "Sign in", signin_path%></li>
+      </ul>
+      <%end%>
+
     </div><!--/.nav-collapse -->
   </div>
 </div>

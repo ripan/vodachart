@@ -1,0 +1,47 @@
+<div class="row content signup">
+  <div class="col-md-4 col-md-offset-4 well">
+
+    <%= form_tag '/auth/identity/register', :role=>"form" do %> 
+    <fieldset>    
+      <%= render :partial => 'shared/formatted_error_messages', :locals => {:obj =>@identity, :summary => false}%>
+      <center>
+        <p class="muted">Sign up</p>
+
+        <div class="form-group"> 
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <%= text_field_tag :name, @identity.try(:name), :class=>"form-control" , :placeholder=>"Name", :autocomplete=>'off'%>
+          </div>
+        </div>
+
+
+        <div class="form-group"> 
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <%= text_field_tag :email, @identity.try(:email), :class=>"form-control" , :placeholder=>"Email", :autocomplete=>'off'%>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            <%= password_field_tag :password,'', :class=>"form-control" , :placeholder=>"Password" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            <%= password_field_tag :password_confirmation,'' , :class=>"form-control" , :placeholder=>"Retype-password"%>
+          </div>
+        </div>
+
+        <%= submit_tag "Create an Account",  :class => "btn btn-large btn-primary", :style=>"width:100%" %>
+
+      </center> 
+    </fieldset>
+    <% end %>
+
+  </div>
+</div>
+

@@ -8,5 +8,13 @@ $navbar-default-link-active-color:$white;
 
 $navbar-height: 50px;
 $navbar-default-border:none;
-
 $navbar-padding-vertical:20px;
+
+$btn-primary-bg:$vcRed;
+$btn-primary-border:$vcRed;
+
+.well{
+  background-color:white;
+  background-image:none;
+  border:1px solid #e3e3e3;
+}

@@ -5,6 +5,8 @@ Vodachart::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  resources :identities
+  #resources :user_sessions 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -54,4 +56,12 @@ Vodachart::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
+  post "/auth/:provider/callback", :to =>  "user_sessions#create"
+  get "/auth/failure", :to => "user_sessions#failure"
+  
+  get "/signout", :to => "user_sessions#destroy", :as => "signout"
+  get "/signin", :to => "user_sessions#new", :as => "signin"
+  get "/signup", :to => "identities#new", :as => "signup"
 end
