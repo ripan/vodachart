@@ -1,6 +1,6 @@
 FLASH_ALERT_MAPPING = {
   :notice => :success,
-  :error => :danger
+  :alert => :danger
 }
 
 #PROJECT_ATTRIBUTES = {:task => 'primary',:milestone => 'info', :issue => 'success', :risk => 'danger'}

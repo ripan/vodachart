@@ -17,19 +17,12 @@
  @import "bootstrap/theme";
 
  body {
-  padding: 100px 0px 100px 0px;
-}
-
-.flash_messages{
-  position: fixed;
-  top: 50px;
-  left: 45%;
-  z-index: 1050;
-  width: 700px;
-  margin-left: -280px;
+  padding: 80px 0px 80px 0px;
 }
 
 #notification{
-  margin-top:-40px;
-  height:35px;  
+  margin-top:-20px;
+  min-height:80px;  
+  overflow:auto;
+  position:relative;
 }
