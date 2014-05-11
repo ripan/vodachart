@@ -10,6 +10,7 @@ class Ability
     else
       cannot :read, :all
       cannot :manage, Role
+      cannot :manage, User
     end
 
 

@@ -14,16 +14,24 @@ roles.each do |role|
 end
 
 for i in 1..5
-  users = {"user #{i}" => "user_#{i}@gmail.com"}
-  users.each do |name, email|
+
+  if i==1 
+    user = {"admin" => "admin@gmail.com"} 
+    role = Role.find_by(:name => "Admin")
+  else
+    user = {"user #{i}" => "user_#{i}@gmail.com"}
+    role = Role.find_by(:name => "Reporting")
+  end
+
+  user.each do |name, email|
     identity = Identity.new(:name => name, :email => email, :password => '12345', :password_confirmation => '12345', :role => "Admin")
     identity.build_user(
       :name => identity.name,
       :email => identity.email,
       :provider => "identity",
       :uid => i
-    )
-    identity.user.roles << Role.first
+      )
+    identity.user.roles << role
     puts identity.save!
   end
 end
