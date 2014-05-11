@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
-  validates :email,  :uniqueness => true
+  validates :email,  :uniqueness => true,  :presence => true
+  validates :provider,:uid,  :presence => true
 
   belongs_to :identity, :foreign_key => 'uid', :dependent => :destroy
   has_and_belongs_to_many :roles
