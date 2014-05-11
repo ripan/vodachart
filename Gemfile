@@ -59,3 +59,4 @@ gem 'omniauth-google'
 gem 'omniauth-twitter'
 
 gem "cancan"
+gem 'rubyXL'
