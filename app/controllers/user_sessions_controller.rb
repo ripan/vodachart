@@ -3,7 +3,8 @@ class UserSessionsController < ApplicationController
  end
 
  def create
-  user = User.from_omniauth(env["omniauth.auth"])
+  user_attr = {:role_id => params[:role_id]}
+  user = User.from_omniauth(env["omniauth.auth"], user_attr || {})
   session[:user_id] = user.id
   redirect_to root_url, notice: "Signed in!"
 end
