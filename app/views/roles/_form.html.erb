@@ -1,21 +1,10 @@
-<%= form_for(@role) do |f| %>
-  <% if @role.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@role.errors.count, "error") %> prohibited this role from being saved:</h2>
-
-      <ul>
-      <% @role.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+<%= form_for(@role, :html => {:role => "form"}) do |f| %>
+ <%= render :partial => 'shared/formatted_error_messages', :locals => {:obj =>@role, :summary => false}%>
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name , :class=>"form-control" , :placeholder=>"Enter name"%>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit :class => "btn btn-large btn-primary"%>
   </div>
 <% end %>

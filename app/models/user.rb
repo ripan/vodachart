@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
     self.roles.pluck(:name).join(', ')
   end
 
+  def is?(requested_role)
+    self.roles.include? Role.find_by_name(requested_role)
+  end
+
 end
