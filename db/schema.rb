@@ -11,12 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511004227) do
+ActiveRecord::Schema.define(version: 20140511182728) do
+
+  create_table "alien_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "aliens", force: true do |t|
+    t.string   "name"
+    t.integer  "alien_category_id"
+    t.integer  "planet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "galaxies", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "identities", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "planets", force: true do |t|
+    t.string   "name"
+    t.integer  "galaxy_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

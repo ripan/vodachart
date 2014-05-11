@@ -9,8 +9,7 @@ class Ability
       can :manage, :all
     else
       cannot :read, :all
-      cannot :manage, Role
-      cannot :manage, User
+      cannot :manage, [Role, User, AlienCategory, Galaxy]
     end
 
 
