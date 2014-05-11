@@ -1,4 +1,6 @@
 Vodachart::Application.routes.draw do
+  resources :users
+
   resources :roles
 
   get "home/index"
