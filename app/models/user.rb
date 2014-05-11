@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
     self.roles.include? Role.find_by_name(requested_role)
   end
 
+  def has_role? role
+    self.roles.include? role
+  end
+
 end
