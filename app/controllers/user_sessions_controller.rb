@@ -5,8 +5,8 @@ class UserSessionsController < ApplicationController
 
   def create
 
-    user_attr = {:role_id => params[:role_id]}
-    role = Role.find_by(:id => user_attr[:role_id])
+    user_attr = {:role => params[:role]}
+    role = Role.find_by(:name=> user_attr[:role])
 
     if role.blank?
       redirect_to root_url, notice: "Please select a valid role"
@@ -32,6 +32,6 @@ class UserSessionsController < ApplicationController
   def failure
     redirect_to signin_path, alert: "Authentication failed, please try again."
   end
-  
+
 end
 

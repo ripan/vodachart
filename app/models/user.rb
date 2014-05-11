@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.name = auth.info.name
       user.email = auth.info.email
-      user.roles << Role.find(user_info[:role_id]) if user.roles.blank?
+      user.roles << Role.find_by(:name => user_info[:role]) if user.roles.blank?
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth["credentials"]["expires_at"]) unless auth["credentials"]["expires_at"].blank?
       user.save!

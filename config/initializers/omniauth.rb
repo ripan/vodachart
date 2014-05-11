@@ -6,7 +6,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :google, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], :scope => 'https://mail.google.com/mail/feed/atom/' 
   provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], :scope => 'publish_stream' 
   provider :identity, 
-  :fields => [:email,:name],
+  :fields => [:email,:name, :role],
   :on_failed_registration => lambda { |env|
     IdentitiesController.action(:new).call(env)
   }
