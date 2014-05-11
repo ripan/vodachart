@@ -1,4 +1,12 @@
 Vodachart::Application.routes.draw do
+  resources :aliens
+
+  resources :alien_categories
+
+  resources :planets
+
+  resources :galaxies
+
   resources :users
 
   resources :roles

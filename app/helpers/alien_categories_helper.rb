@@ -1,0 +1,2 @@
+module AlienCategoriesHelper
+end

@@ -1,0 +1,27 @@
+<h1>Listing alien_categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alien_categories.each do |alien_category| %>
+      <tr>
+        <td><%= alien_category.name %></td>
+        <td><%= link_to 'Show', alien_category %></td>
+        <td><%= link_to 'Edit', edit_alien_category_path(alien_category) %></td>
+        <td><%= link_to 'Destroy', alien_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Alien category', new_alien_category_path %>
