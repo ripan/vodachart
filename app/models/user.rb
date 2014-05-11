@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
 
   validates :email,  :uniqueness => true,  :presence => true
-  validates :provider,:uid,  :presence => true
+  validates :provider,  :presence => true
 
-  belongs_to :identity, :foreign_key => 'uid', :dependent => :destroy
+  belongs_to :identity, :dependent => :destroy
   has_and_belongs_to_many :roles
 
   def self.from_omniauth(auth, user_info)

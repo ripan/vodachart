@@ -22,11 +22,6 @@ describe User do
       expect(@user).to be_invalid
     end
 
-    it "uid is not present" do
-      @user.uid = ""
-      expect(@user).to be_invalid
-    end
-
     it "provider is not present" do
       @user.provider = ""
       expect(@user).to be_invalid

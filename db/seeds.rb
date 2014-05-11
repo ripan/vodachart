@@ -16,14 +16,14 @@ end
 for i in 1..5
   users = {"user #{i}" => "user_#{i}@gmail.com"}
   users.each do |name, email|
-    identity = Identity.create(:name => name, :email => email, :password => '12345', :password_confirmation => '12345')
-    user = identity.build_user(
+    identity = Identity.new(:name => name, :email => email, :password => '12345', :password_confirmation => '12345', :role => "Admin")
+    identity.build_user(
       :name => identity.name,
       :email => identity.email,
       :provider => "identity",
       :uid => i
     )
-    user.roles << Role.first
-    user.save
+    identity.user.roles << Role.first
+    puts identity.save!
   end
 end
