@@ -59,4 +59,4 @@ gem 'omniauth-google'
 gem 'omniauth-twitter'
 
 gem "cancan"
-gem 'rubyXL'
+gem 'simple_xlsx_reader'

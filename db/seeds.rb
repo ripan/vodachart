@@ -15,8 +15,8 @@ end
 
 for i in 1..5
 
-  if i==1 
-    user = {"admin" => "admin@gmail.com"} 
+  if i==1
+    user = {"admin" => "admin@gmail.com"}
     role = Role.find_by(:name => "Admin")
   else
     user = {"user #{i}" => "user_#{i}@gmail.com"}
@@ -30,8 +30,12 @@ for i in 1..5
       :email => identity.email,
       :provider => "identity",
       :uid => i
-      )
+    )
     identity.user.roles << role
-    puts identity.save!
+    puts identity.save
   end
 end
+
+require 'xlsx_parser'
+file_name = "TestDataSmall.xlsx"
+puts XlsxParser.new(file_name)

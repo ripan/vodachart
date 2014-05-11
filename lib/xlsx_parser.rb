@@ -1,48 +1,20 @@
 require 'rubygems'
-require 'rubyXL'
+require 'simple_xlsx_reader'
 
+class XlsxParser
+  attr_accessor :rows
+  def initialize(filename)
+    doc = SimpleXlsxReader.open(filename)
+    @rows = doc.sheets.first.rows
 
-file_path = "TestData.xlsx"
+    resources = {0 => "Alien", 1=>"AlienCategory", 2 => "Planet", 3 => "Galaxy"}
 
-puts "unsing RubyXL #{Time.now}"
-workbook = RubyXL::Parser.parse(file_path)
-workbook.worksheets.each do |ws|
-
-
-  puts ws.sheet_name
-  puts ws.extract_data
-
-
-
-  # # puts ws.sheet_name
-  # row_count = ws.count
-  # col_count = ws[0].count
-  
-  # if row_count == 1 && col_count == 1
-  #   next
-  # end
-  
-  
-  # col_start  = 5 - 1
-  # col_end = 8 - 1
-  
-  # row_start  = 1 - 1
-  # row_end = row_count - 1
-  
-  
-  
-  # #puts ws[0][0..7]
-  # # 
-  # # puts 'hhhhhhhhhhhhhhhhhh'
-
-
-
-  # for i in row_start..row_end
-  #   puts "ROW #{i}"
-  #   puts ws[i][col_start..col_end].inspect
-  # end
-
-
+    @rows.drop(1).each_with_index do |row, index|
+      #puts resource = resources[index].constantize
+      puts "#{row[0]} #{row[1]} #{row[2]}"
+    end
+  end
 end
 
-
+#file_name = "TestDataSmall.xlsx"
+#puts XlsxParser.new(file_name)
