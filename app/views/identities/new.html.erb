@@ -36,12 +36,16 @@
           </div>
         </div>
 
-        <%= submit_tag "Create an Account",  :class => "btn btn-large btn-primary", :style=>"width:100%" %>
+        <div class="form-group">
+         <%= select_tag(:owner, options_for_select(Role.all.map { |r| [r.name, r.id] }),{:class=>'form-control',:prompt => 'Select role' })   %>
+       </div>
 
-      </center> 
-    </fieldset>
-    <% end %>
+       <%= submit_tag "Create an Account",  :class => "btn btn-large btn-primary", :style=>"width:100%" %>
 
-  </div>
+     </center> 
+   </fieldset>
+   <% end %>
+
+ </div>
 </div>
 

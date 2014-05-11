@@ -51,3 +51,5 @@ gem 'omniauth-identity'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
 gem 'omniauth-twitter'
+
+gem "cancan"
