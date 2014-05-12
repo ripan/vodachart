@@ -1,4 +1,10 @@
 Vodachart::Application.routes.draw do
+  resources :stages
+
+  resources :products
+
+  resources :product_families
+
   resources :aliens
 
   resources :alien_categories
