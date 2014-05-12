@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511182728) do
+ActiveRecord::Schema.define(version: 20140512230405) do
 
   create_table "alien_categories", force: true do |t|
     t.string   "name"
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 20140511182728) do
     t.datetime "updated_at"
   end
 
+  create_table "product_families", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.integer  "product_family_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -57,6 +70,12 @@ ActiveRecord::Schema.define(version: 20140511182728) do
   create_table "roles_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stages", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

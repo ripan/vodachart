@@ -13,25 +13,43 @@
       <ul class="nav navbar-nav">
         <li class="active"><%=link_to "Home", root_url%></li>
         <% if can? :manage, Role %> 
-        <li class="active"><%=link_to "Users", users_url%></li>
-        <li class="active"><%=link_to "Roles", roles_url%></li>
-        <li class="active"><%=link_to "Galaxies", galaxies_url%></li>
-        <li class="active"><%=link_to "Alien Categories", alien_categories_url%></li>
-        <%end%>
-      </ul>
+        <li class=""><%=link_to "Users", users_url%></li>
+        <li class=""><%=link_to "Roles", roles_url%></li>
+        <li class=""><%=link_to "Galaxies", galaxies_url%></li>
+        <li class=""><%=link_to "Planets", planets_url%></li>
 
-      <%if signed_in?%>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%=link_to "#{current_user.name} | #{current_user.role}", root_url , :class=>"navbar-link"%></li>
-        <li><%=link_to "Sign out", signout_path%> </li>
-      </ul>
-      <%else%>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%=link_to "Sign up", signup_path%></li>
-        <li><%=link_to "Sign in", signin_path%></li>
-      </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aliens <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+           <li class=""><%=link_to "Aliens", aliens_url%></li>
+           <li class=""><%=link_to "Alien Categories", alien_categories_url%></li>
+         </ul>
+       </li>
+
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+          <li class=""><%=link_to "Products", products_url%></li>
+          <li class=""><%=link_to "Product families", product_families_url%></li>
+        </ul>
+      </li>
+
+      <li class=""><%=link_to "Stages", stages_url%></li>
       <%end%>
+    </ul>
 
-    </div><!--/.nav-collapse -->
-  </div>
+    <%if signed_in?%>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%=link_to "#{current_user.name} | #{current_user.role}", root_url , :class=>"navbar-link"%></li>
+      <li><%=link_to "Sign out", signout_path%> </li>
+    </ul>
+    <%else%>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%=link_to "Sign up", signup_path%></li>
+      <li><%=link_to "Sign in", signin_path%></li>
+    </ul>
+    <%end%>
+
+  </div><!--/.nav-collapse -->
+</div>
 </div>

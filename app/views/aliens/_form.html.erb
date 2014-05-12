@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :alien_category_id %><br>
     <%= f.number_field :alien_category_id %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :planet_id %><br>
     <%= f.number_field :planet_id %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit :class => "btn btn-large btn-primary"%>
   </div>
 <% end %>
