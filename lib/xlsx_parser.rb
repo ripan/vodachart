@@ -36,7 +36,7 @@ class XlsxParser
       monthly_revenue = row[11]
 
 
-      @aliens << {:name => alien, :alien_category => alien_category}
+      @aliens << {:name => alien, :alien_category => alien_category, :planet => planet}
       @alien_categories << {:name => alien_category}
       @planets << {:name => planet, :galaxy => galaxy}
       @galaxies << {:name => galaxy}
@@ -71,6 +71,7 @@ class XlsxParser
     end
     puts "Create Aliens"
     @aliens.uniq.each do  |alien|
+      alien[:planet] = Planet.find_by(:name => alien[:planet])
       alien[:alien_category] = AlienCategory.find_by(:name => alien[:alien_category])
       Alien.create(alien)
     end

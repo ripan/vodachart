@@ -14,10 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+
 //= require_tree .
 
 $(function() {
-  
-  $("#notification .alert").fadeOut(5000);
+
+	$("#notification .alert").fadeOut(5000);
+	$("#planet").chained("#galaxy");
+	$("#alien").chained("#planet");
+	$("#product").chained("#alien");
 
 }); //end function

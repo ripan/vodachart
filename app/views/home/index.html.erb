@@ -1,1 +1,37 @@
 <h1>Welcome</h1>
+
+<%=select_tag "galaxies", options_from_collection_for_select(Galaxy.all, "id", "name"), :prompt => "Select Galaxy", :class=>"form-control"%>
+<%=select_tag "planets", options_from_collection_for_select(Planet.all, "id", "name"), :prompt => "", :class=>"form-control"%>
+
+
+
+<select id="galaxy" name="galaxy">
+	<option value="">Select Galaxy</option>
+	<%Galaxy.all.each do |galaxy|%>
+	<option value="<%=galaxy.name%>"><%=galaxy.name%></option>
+	<%end%>
+</select>
+
+<select id="planet" name="planet">
+	<option value="">Select Galaxy</option>
+	<%Planet.all.each do |planet|%>
+	<option value="<%=planet.name%>" class="<%=planet.galaxy.name%>"><%=planet.name%></option>
+	<%end%>
+</select>
+
+<select id="alien" name="alien">
+	<option value="">Select Alien</option>
+	<%Alien.all.each do |alien|%>
+	<option value="<%=alien.name%>" class="<%=alien.planet.name%>"><%=alien.name%></option>
+	<%end%>
+</select>
+
+<select id="product" name="product">
+	<option value="">Select product</option>
+	<%Product.all.each do |product|%>
+	<option value="<%=product.name%>" class="<%=product.name%>"><%=product.name%></option>
+	<%end%>
+</select>
+
+
+
