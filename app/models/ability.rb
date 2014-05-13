@@ -7,9 +7,8 @@ class Ability
 
     if user.is? :admin
       can :manage, :all
-    else
-      cannot :read, :all
-      cannot :manage, [Role, User, Galaxy, Planet, Alien, AlienCategory, Product, ProductFamily, Stage, Order]
+    elsif user.is? :reporting
+      can :manage, [Order]
     end
 
 

@@ -14,10 +14,13 @@ roles.each do |role|
 end
 
 for i in 1..5
-
-  if i==1
+  case i
+  when 1
     user = {"admin" => "admin@gmail.com"}
     role = Role.find_by(:name => "Admin")
+  when 2
+    user = {"guest" => "guest@gmail.com"}
+    role = Role.find_by(:name => "Guest")
   else
     user = {"user #{i}" => "user_#{i}@gmail.com"}
     role = Role.find_by(:name => "Reporting")
