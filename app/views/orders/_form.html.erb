@@ -1,0 +1,45 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :alien_id %><br>
+    <%= f.number_field :alien_id %>
+  </div>
+  <div class="form-group">
+    <%= f.label :product_id %><br>
+    <%= f.number_field :product_id %>
+  </div>
+  <div class="form-group">
+    <%= f.label :stage_id %><br>
+    <%= f.number_field :stage_id %>
+  </div>
+  <div class="form-group">
+    <%= f.label :closed_at %><br>
+    <%= f.datetime_select :closed_at %>
+  </div>
+  <div class="form-group">
+    <%= f.label :is_closed %><br>
+    <%= f.check_box :is_closed %>
+  </div>
+  <div class="form-group">
+    <%= f.label :setup_charge %><br>
+    <%= f.text_field :setup_charge %>
+  </div>
+  <div class="form-group">
+    <%= f.label :monthly_revenue %><br>
+    <%= f.text_field :monthly_revenue %>
+  </div>
+  <div class="form-group">
+    <%= f.submit :class => "btn btn-large btn-primary"%>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 Vodachart::Application.routes.draw do
+  resources :orders
+
   resources :stages
 
   resources :products

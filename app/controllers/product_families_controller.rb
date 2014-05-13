@@ -1,4 +1,5 @@
 class ProductFamiliesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_product_family, only: [:show, :edit, :update, :destroy]
 
   # GET /product_families

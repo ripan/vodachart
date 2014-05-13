@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Alien:</strong>
+  <%= @order.alien_id %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @order.product_id %>
+</p>
+
+<p>
+  <strong>Stage:</strong>
+  <%= @order.stage_id %>
+</p>
+
+<p>
+  <strong>Closed at:</strong>
+  <%= @order.closed_at %>
+</p>
+
+<p>
+  <strong>Is closed:</strong>
+  <%= @order.is_closed %>
+</p>
+
+<p>
+  <strong>Setup charge:</strong>
+  <%= @order.setup_charge %>
+</p>
+
+<p>
+  <strong>Monthly revenue:</strong>
+  <%= @order.monthly_revenue %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

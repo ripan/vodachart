@@ -26,7 +26,7 @@ class XlsxParser
       @galaxies << row[3]
       @products << row[4]
       @product_families << row[5]
-      @stages << << row[6]
+      @stages << row[6]
     end
   end
 
