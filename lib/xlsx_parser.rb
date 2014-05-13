@@ -49,33 +49,33 @@ class XlsxParser
 
   def create_tables
     puts "Create Galaxies"
-    @galaxies.each do  |galaxy|
+    @galaxies.uniq.each do  |galaxy|
       Galaxy.create(galaxy)
     end
     puts "Create Alien Categories"
-    @alien_categories.each do  |alien_category|
+    @alien_categories.uniq.each do  |alien_category|
       AlienCategory.create(alien_category)
     end
     puts "Create Product Families"
-    @product_families.each do  |product_family|
+    @product_families.uniq.each do  |product_family|
       ProductFamily.create(product_family)
     end
     puts "Create Stages"
-    @stages.each do  |stage|
+    @stages.uniq.each do  |stage|
       Stage.create(stage)
     end
     puts "Create Planets"
-    @planets.each do  |planet|
+    @planets.uniq.each do  |planet|
       planet[:galaxy] = Galaxy.find_by(:name => planet[:galaxy])
       Planet.create(planet)
     end
     puts "Create Aliens"
-    @aliens.each do  |alien|
+    @aliens.uniq.each do  |alien|
       alien[:alien_category] = AlienCategory.find_by(:name => alien[:alien_category])
       Alien.create(alien)
     end
     puts "Create Products"
-    @products.each do  |product|
+    @products.uniq.each do  |product|
       product[:product_family] = ProductFamily.find_by(:name => product[:product_family])
       Product.create(product)
     end
@@ -90,27 +90,27 @@ class XlsxParser
 
 end
 
-file_name = "TestData.xlsx"
-puts parser = XlsxParser.new(file_name)
-puts parser.rows.count
-puts parser.header
+file_name = "TestDataSmall.xlsx"
+parser = XlsxParser.new(file_name)
+#parser.rows.count
+#parser.header
 
 puts "\n\ngalaxies \n\n"
-puts parser.galaxies
+puts parser.galaxies.uniq.count
 
 puts "\n\nplanets \n\n"
-puts parser.planets
+puts parser.planets.uniq.count
 
 puts "\n\naliens \n\n"
-puts parser.aliens
+puts parser.aliens.uniq.count
 
 puts "\n\nproducts \n\n"
-puts parser.products
+puts parser.products.uniq.count
 
 puts "\n\nstages \n\n"
-puts parser.stages
+puts parser.stages.uniq.count
 
 puts "\n\orders \n\n"
-puts parser.orders
+puts parser.orders.count
 
-puts parser.create_tables
+parser.create_tables
