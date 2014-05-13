@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512230405) do
+ActiveRecord::Schema.define(version: 20140513110017) do
 
   create_table "alien_categories", force: true do |t|
     t.string   "name"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 20140512230405) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "alien_id"
+    t.integer  "product_id"
+    t.integer  "stage_id"
+    t.datetime "closed_at"
+    t.boolean  "is_closed",                                default: false, null: false
+    t.decimal  "setup_charge",    precision: 10, scale: 0
+    t.decimal  "monthly_revenue", precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,7 +2,7 @@ require 'rubygems'
 require 'simple_xlsx_reader'
 
 class XlsxParser
-  attr_accessor :rows, :header, :galaxies, :planets, :aliens, :alien_categories,:products, :product_families
+  attr_accessor :rows, :header, :galaxies, :planets, :aliens, :alien_categories,:products, :product_families,:stages,:orders, :resource_mapping
   def initialize(filename)
     doc = SimpleXlsxReader.open(filename)
     @rows = doc.sheets.first.rows
@@ -14,41 +14,103 @@ class XlsxParser
     @products = []
     @product_families = []
     @stages = []
+    @orders = []
 
-    resources = {0 => "Alien", 1=>"AlienCategory", 2 => "Planet", 3 => "Galaxy"}
+    @resource_mapping = {0 => "Alien", 1=>"AlienCategory", 2 => "Planet", 3 => "Galaxy", 4 => "Product", 5 => "ProductFamily", 6 => "Stage"}
 
     @rows.drop(1).each_with_index do |row, index|
       #puts resource = resources[index].constantize
       #puts "#{row[0]} #{row[1]} #{row[2]} #{row[3]}"
-      @aliens << row[0]
-      @alien_categories << row[1]
-      @planets << row[2]
-      @galaxies << row[3]
-      @products << row[4]
-      @product_families << row[5]
-      @stages << row[6]
+
+      alien = row[0]
+      alien_category = row[1]
+      planet = row[2]
+      galaxy = row[3]
+      product = row[4]
+      product_family = row[5]
+      stage = row[6]
+      created_at = row[7]
+      closed_at = row[8]
+      is_closed = row[9]
+      setup_charge = row[10]
+      monthly_revenue = row[11]
+
+
+      @aliens << {:name => alien, :alien_category => alien_category}
+      @alien_categories << {:name => alien_category}
+      @planets << {:name => planet, :galaxy => galaxy}
+      @galaxies << {:name => galaxy}
+      @products << {:name => product, :product_family => product_family}
+      @product_families << {:name => product_family}
+      @stages << {:name => stage}
+      @orders << {:alien => alien, :product => product, :stage => stage, :created_at => created_at, :closed_at => closed_at, :is_closed => is_closed, :setup_charge => setup_charge, :monthly_revenue => monthly_revenue}
     end
   end
 
-  def create_galaxy(galaxy_name)
-    puts "galaxy created #{galaxy_name}"
+  def create_tables
+    puts "Create Galaxies"
+    @galaxies.each do  |galaxy|
+      Galaxy.create(galaxy)
+    end
+    puts "Create Alien Categories"
+    @alien_categories.each do  |alien_category|
+      AlienCategory.create(alien_category)
+    end
+    puts "Create Product Families"
+    @product_families.each do  |product_family|
+      ProductFamily.create(product_family)
+    end
+    puts "Create Stages"
+    @stages.each do  |stage|
+      Stage.create(stage)
+    end
+    puts "Create Planets"
+    @planets.each do  |planet|
+      planet[:galaxy] = Galaxy.find_by(:name => planet[:galaxy])
+      Planet.create(planet)
+    end
+    puts "Create Aliens"
+    @aliens.each do  |alien|
+      alien[:alien_category] = AlienCategory.find_by(:name => alien[:alien_category])
+      Alien.create(alien)
+    end
+    puts "Create Products"
+    @products.each do  |product|
+      product[:product_family] = ProductFamily.find_by(:name => product[:product_family])
+      Product.create(product)
+    end
+    puts "Create Orders"
+    @orders.each do  |order|
+      order[:alien] = Alien.find_by(:name => order[:alien])
+      order[:product] = Product.find_by(:name => order[:product])
+      order[:stage] = Stage.find_by(:name => order[:stage])
+      Order.create(order)
+    end
   end
 
 end
 
-file_name = "TestDataSmall.xlsx"
+file_name = "TestData.xlsx"
 puts parser = XlsxParser.new(file_name)
 puts parser.rows.count
 puts parser.header
+
 puts "\n\ngalaxies \n\n"
 puts parser.galaxies
+
 puts "\n\nplanets \n\n"
 puts parser.planets
+
 puts "\n\naliens \n\n"
 puts parser.aliens
-puts "\n\nalien_categories \n\n"
-puts parser.alien_categories
+
 puts "\n\nproducts \n\n"
 puts parser.products
-puts "\n\nproduct_families \n\n"
-puts parser.product_families
+
+puts "\n\nstages \n\n"
+puts parser.stages
+
+puts "\n\orders \n\n"
+puts parser.orders
+
+puts parser.create_tables

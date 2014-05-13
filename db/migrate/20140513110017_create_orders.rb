@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :product_id
       t.integer :stage_id
       t.datetime :closed_at
-      t.boolean :is_closed
+      t.boolean :is_closed, :default => false, :null => false
       t.decimal :setup_charge
       t.decimal :monthly_revenue
 
