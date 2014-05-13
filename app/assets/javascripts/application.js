@@ -22,6 +22,7 @@ $(function() {
 	$("#notification .alert").fadeOut(5000);
 	$("#planet").chained("#galaxy");
 	$("#alien").chained("#planet");
-	$("#product").chained("#alien");
+
+	$("#product").chained("#product_family");
 
 }); //end function
