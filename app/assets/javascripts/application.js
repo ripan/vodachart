@@ -19,7 +19,7 @@
 
 $(function() {
   var loader = '<img alt="Loader" src="loader.gif">';
-	$("#notification .alert").fadeOut(5000);
+  $("#notification .alert").fadeOut(5000);
 
   $('form#frm_order_search').bind("ajax:beforeSend", function(evt, xhr, settings) {
     anyOnePresent = !$("#alien").val() && !$("#product").val();
@@ -30,13 +30,20 @@ $(function() {
       $("#notification").html("")
       $('#orders').html('<center>' + loader + ' <br>  Loading Orders.....' + '<center>');
     }
-  })
+  });
 
-	$("#planet").chained("#galaxy");
-	$("#alien").chained("#planet");
-	$("#product").chained("#product_family");
+  $('form#frm_order_search').bind("ajax:success", function(evt, xhr, settings) {
+    $('#table-orders-list').dataTable();
+  });
+
+  $('form#frm_order_search').bind("ajax:error", function(evt, xhr, settings) {
+    alert('Some error in displaying orders')
+  });
 
 
+  $("#planet").chained("#galaxy");
+  $("#alien").chained("#planet");
+  $("#product").chained("#product_family");
 
 
 
