@@ -18,7 +18,7 @@
 //= require_tree .
 
 $(function() {
-
+  var loader = '<img alt="Loader" src="loader.gif">';
 	$("#notification .alert").fadeOut(5000);
 
   $('form#frm_order_search').bind("ajax:beforeSend", function(evt, xhr, settings) {
@@ -28,6 +28,7 @@ $(function() {
       return false;
     } else {
       $("#notification").html("")
+      $('#orders').html('<center>' + loader + ' <br>  Loading Orders.....' + '<center>');
     }
   })
 
