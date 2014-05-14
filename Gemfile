@@ -68,4 +68,3 @@ gem 'simple_xlsx_reader'
 gem 'will_paginate', '~> 3.0'
 gem 'groupdate'
 gem "chartkick"
-gem 'pg'
