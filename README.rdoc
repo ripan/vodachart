@@ -7,9 +7,9 @@ Things you may want to cover:
 
 * Ruby version 
 
--RUBYGEMS VERSION: 2.2.1
--RUBY VERSION: 2.0.0 (2013-11-22 patchlevel 353) [x86_64-darwin12.5.0]
--RUBYGEMS PLATFORMS:
+    - RUBYGEMS VERSION: 2.2.1
+    - RUBY VERSION: 2.0.0 (2013-11-22 patchlevel 353) [x86_64-darwin12.5.0]
+    - RUBYGEMS PLATFORMS:
     - ruby
     - x86_64-darwin-12
 
