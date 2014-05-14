@@ -1,0 +1,43 @@
+<h1>Listing orders</h1>
+
+<%if paginate%>
+<p><strong><%= page_entries_info orders %></strong></p>
+<%= will_paginate orders %>
+<%else%>
+<strong>Displaying <%=orders.count %> orders</strong>
+<%end%>
+<br>
+
+<table class="table table-condensed table-striped datatable" id="table-orders-list">
+  <thead>
+    <tr>
+      <th>Alien</th>
+      <th>Alien Category</th>
+      <th>Product</th>
+      <th>Product Family</th>
+      <th>Stage</th>
+      <th>Created at</th>
+      <th>Closed at</th>
+      <th>Is closed</th>
+      <th>Setup charge</th>
+      <th>Monthly revenue</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% orders.each do |order| %>
+    <tr>
+      <td><%= order.alien.name %></td>
+      <td><%= order.alien.alien_category.name %></td>
+      <td><%= order.product.name %></td>
+      <td><%= order.product.product_family.name %></td>
+      <td><%= order.stage.name %></td>
+      <td><%= order.created_at.strftime("%x") %></td>
+      <td><%= order.closed_at.strftime("%x") %></td>
+      <td><%= order.is_closed %></td>
+      <td><%= order.setup_charge %></td>
+      <td><%= order.monthly_revenue %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

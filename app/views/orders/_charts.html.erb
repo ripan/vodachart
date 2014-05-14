@@ -1,0 +1,25 @@
+ <h1>Listing charts</h1>
+
+ <h3>Orders placed based on client/Alien</h3>
+ <%= pie_chart orders.joins(:alien).group(:name).count %>
+
+ <h3>Orders placed based on product</h3>
+ <%= pie_chart orders.joins(:product).group(:name).count %>
+
+ <h3>Orders status based on stage</h3>
+ <%= pie_chart orders.joins(:stage).group(:name).count %>
+
+ <h3>Alien name column chart</h3>
+ <%= column_chart orders.joins(:alien).group(:name).count %>
+
+ <h3>Product name column chart</h3>
+ <%= column_chart orders.joins(:product).group(:name).count %>
+
+ <h3>Stage based column chart</h3>
+ <%= column_chart orders.joins(:stage).group(:name).count %>
+
+ <h3>Monthly revenue from product</h3>
+ <%= bar_chart orders.joins(:product).group(:name).sum(:monthly_revenue) %>
+
+ <h3>Monthly revenue from alien</h3>
+ <%= bar_chart orders.joins(:alien).group(:name).sum(:monthly_revenue) %>
