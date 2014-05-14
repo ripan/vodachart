@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#orders_data" data-toggle="tab">Orders</a></li>
+  <li><a href="#chart" data-toggle="tab">Charts</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="orders_data">
+    <%=render :partial => "orders", :locals => {:orders => orders, :paginate => paginate}%>
+  </div>
+
+  <div class="tab-pane" id="chart">
+    <%=render :partial => "charts", :locals => {:orders => orders}%>
+  </div>
+</div>
+
