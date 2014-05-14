@@ -1,4 +1,5 @@
 <h1>Listing aliens</h1>
+<%= will_paginate @aliens %>
 
 <table class="table table-condensed table-striped">
   <thead>
@@ -16,8 +17,8 @@
     <% @aliens.each do |alien| %>
       <tr>
         <td><%= alien.name %></td>
-        <td><%= alien.alien_category_id %></td>
-        <td><%= alien.planet_id %></td>
+        <td><%= alien.alien_category.name %></td>
+        <td><%= alien.planet.name %></td>
         <td><%= link_to 'Show', alien %></td>
         <td><%= link_to 'Edit', edit_alien_path(alien) %></td>
         <td><%= link_to 'Destroy', alien, method: :delete, data: { confirm: 'Are you sure?' } %></td>

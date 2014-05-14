@@ -11,6 +11,7 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
+        <li class=""><%=link_to "Home", root_url%></li>
         <% if can? :manage, Role %> 
         <li class=""><%=link_to "Users", users_url%></li>
         <li class=""><%=link_to "Roles", roles_url%></li>

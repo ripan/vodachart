@@ -60,3 +60,4 @@ gem 'omniauth-twitter'
 
 gem "cancan"
 gem 'simple_xlsx_reader'
+gem 'will_paginate', '~> 3.0'

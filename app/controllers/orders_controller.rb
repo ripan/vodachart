@@ -5,7 +5,24 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.paginate(:page => params[:page])
+  end
+
+  def search
+
+    if params[:alien].blank?
+      search_options = {:product_id => params[:product]}
+    elsif params[:product].blank?
+      search_options = {:alien_id => params[:alien]}
+    else 
+      search_options = {:alien_id => params[:alien], :product_id => params[:product]}
+    end
+
+    @orders = Order.where(search_options)
+    respond_to do |format|
+      format.html { redirect_to orders_url, notice: 'Displaying All Orders.' }
+      format.js
+    end
   end
 
   # GET /orders/1
@@ -63,13 +80,13 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:alien_id, :product_id, :stage_id, :closed_at, :is_closed, :setup_charge, :monthly_revenue)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:alien_id, :product_id, :stage_id, :closed_at, :is_closed, :setup_charge, :monthly_revenue)
+  end
 end

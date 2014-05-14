@@ -20,9 +20,23 @@
 $(function() {
 
 	$("#notification .alert").fadeOut(5000);
+
+  $('form#frm_order_search').bind("ajax:beforeSend", function(evt, xhr, settings) {
+    anyOnePresent = !$("#alien").val() && !$("#product").val();
+    if (anyOnePresent) {
+      $("#notification").html("<center><div class='alert alert-danger'><strong>Please select Alien or Product</strong></div></center>")
+      return false;
+    } else {
+      $("#notification").html("")
+    }
+  })
+
 	$("#planet").chained("#galaxy");
 	$("#alien").chained("#planet");
-
 	$("#product").chained("#product_family");
+
+
+
+
 
 }); //end function

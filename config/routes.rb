@@ -26,6 +26,7 @@ Vodachart::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   resources :identities
+  post "orders/search"
   #resources :user_sessions 
 
   # Example of regular route:

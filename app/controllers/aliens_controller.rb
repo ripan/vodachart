@@ -5,7 +5,7 @@ class AliensController < ApplicationController
   # GET /aliens
   # GET /aliens.json
   def index
-    @aliens = Alien.all
+    @aliens = Alien.paginate(:page => params[:page])
   end
 
   # GET /aliens/1

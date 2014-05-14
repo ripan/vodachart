@@ -1,4 +1,5 @@
 <h1>Listing planets</h1>
+<%= will_paginate @planets %>
 
 <table class="table table-condensed table-striped">
   <thead>
@@ -15,7 +16,7 @@
     <% @planets.each do |planet| %>
       <tr>
         <td><%= planet.name %></td>
-        <td><%= planet.galaxy_id %></td>
+        <td><%= planet.galaxy.name %></td>
         <td><%= link_to 'Show', planet %></td>
         <td><%= link_to 'Edit', edit_planet_path(planet) %></td>
         <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

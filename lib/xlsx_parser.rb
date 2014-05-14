@@ -100,7 +100,7 @@ class XlsxParser
 
 end
 
-file_name = "TestDataSmall.xlsx"
+file_name = "TestData.xlsx"
 parser = XlsxParser.new(file_name)
 parser.parse_data
 parser.import_data

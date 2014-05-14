@@ -5,7 +5,7 @@ class GalaxiesController < ApplicationController
   # GET /galaxies
   # GET /galaxies.json
   def index
-    @galaxies = Galaxy.all
+    @galaxies = Galaxy.paginate(:page => params[:page])
   end
 
   # GET /galaxies/1
