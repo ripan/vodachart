@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'xlsx_parser'
+
 
 roles = ["Admin", "Reporting", "Guest"]
 
@@ -39,6 +41,32 @@ for i in 1..5
   end
 end
 
-require 'xlsx_parser'
-file_name = "TestDataSmall.xlsx"
-puts XlsxParser.new(file_name)
+
+file_name = "TestData.xlsx"
+parser = XlsxParser.new(file_name)
+parser.parse_data
+parser.import_data
+
+puts "\n\ngalaxies"
+puts parser.galaxies.count
+
+puts "\n\nplanets"
+puts parser.planets.count
+
+puts "\n\naliens"
+puts parser.aliens.count
+
+puts "\n\nalien categories"
+puts parser.alien_categories.count
+
+puts "\n\nproducts"
+puts parser.products.count
+
+puts "\n\nproduct families"
+puts parser.product_families.count
+
+puts "\n\nstages"
+puts parser.stages.count
+
+puts "\n\orders"
+puts parser.orders.count
