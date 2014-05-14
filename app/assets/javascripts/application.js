@@ -23,7 +23,7 @@ $(function() {
   var loader = '<img alt="Loader" src="loader.gif">';
   $("#notification .alert").fadeOut(5000);
 
-  $('form#frm_order_search').bind("ajax:beforeSend", function(evt, xhr, settings) {
+  $(document).on("ajax:beforeSend", 'form#frm_order_search', function(evt, xhr, settings) {
     anyOnePresent = !$("#alien").val() && !$("#product").val();
     if (anyOnePresent) {
       $("#notification").html("<center><div class='alert alert-danger'><strong>Please select Alien or Product</strong></div></center>")
@@ -34,11 +34,13 @@ $(function() {
     }
   });
 
-  $('form#frm_order_search').bind("ajax:success", function(evt, xhr, settings) {
-    $('#table-orders-list').dataTable();
+  $(document).on("ajax:success", 'form#frm_order_search', function(evt, xhr, settings) {
+    $('.datatable').dataTable({
+      "sPaginationType": "bootstrap"
+    });
   });
 
-  $('form#frm_order_search').bind("ajax:error", function(evt, xhr, settings) {
+  $(document).on("ajax:error", 'form#frm_order_search', function(evt, xhr, settings) {  
     alert('Some error in displaying orders')
   });
 

@@ -1,5 +1,1 @@
 $("#orders").html("<%= escape_javascript render(:partial => 'list', :locals => {:orders => @orders, :paginate => false}) %>");
-
-$('.datatable').dataTable({
-"sPaginationType": "bootstrap"
-});
