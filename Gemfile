@@ -39,6 +39,8 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

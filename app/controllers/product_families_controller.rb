@@ -5,7 +5,7 @@ class ProductFamiliesController < ApplicationController
   # GET /product_families
   # GET /product_families.json
   def index
-    @product_families = ProductFamily.paginate(:page => params[:page])
+    @product_families = ProductFamily.all
   end
 
   # GET /product_families/1

@@ -5,7 +5,7 @@ class PlanetsController < ApplicationController
   # GET /planets
   # GET /planets.json
   def index
-    @planets = Planet.paginate(:page => params[:page])
+    @planets = Planet.all
   end
 
   # GET /planets/1
