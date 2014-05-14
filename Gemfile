@@ -53,6 +53,9 @@ gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-ra
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'rails_12factor', :group => :production
+gem 'heroku-deflater', :group => :production
+
 
 gem 'omniauth'
 gem 'omniauth-identity'
@@ -65,3 +68,4 @@ gem 'simple_xlsx_reader'
 gem 'will_paginate', '~> 3.0'
 gem 'groupdate'
 gem "chartkick"
+gem 'pg'
